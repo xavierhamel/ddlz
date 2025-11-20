@@ -1,8 +1,8 @@
 import './core/app'
 import '../style.css'
 import { Whiteboard } from './ui/whiteboard'
-import { useRef, useState } from 'preact/hooks'
-import { type Document, Repository } from './core/repository'
+import { useEffect, useRef, useState } from 'preact/hooks'
+import { Repository } from './core/repository'
 
 // 1. Check pour id dans l'url
 //  1.1. Si id, on load le document local. Sinon on load le document distant
@@ -21,14 +21,45 @@ export function App() {
   const repository = useRef(new Repository())
   const [documents] = useState(repository.current.listDocuments())
   const [_document, setDocument] = useState(repository.current.lastDocumentUsed())
+  const [showDropdown, setShowDropdown] = useState(false)
+
+  useEffect(() => {
+    const element: HTMLElement | null = document.querySelector('#core-text-wrapper')
+    if (!element) {
+      return
+    }
+    function clickHandler() {
+      setShowDropdown(false)
+    }
+    element.addEventListener('click', clickHandler)
+    return () => element.removeEventListener('click', clickHandler)
+  }, [])
+
   return (
     <>
       <div id="overlay">
-        {documents.map(({ name, id }) => (
-          <div onClick={() => setDocument(repository.current.loadDocumentById(id))}>
-            {name ?? id}
+        <div className="files">
+          <div className="row">
+            <button className="with-bg" onClick={() => setShowDropdown(prev => !prev)}>
+              <i class="bi bi-list"></i>
+            </button>
+            <button className="active w-auto" onClick={() => {
+              setDocument(repository.current.createDocument())
+            }}>
+              New
+              <i class="bi bi-file-earmark"></i>
+            </button>
           </div>
-        ))}
+          {showDropdown && (
+            <div className="card card-col dropdown">
+              {documents.map(({ name, id }) => (
+                <button className="dropdown-button" onClick={() => setDocument(repository.current.loadDocumentById(id))}>
+                  {name ?? id}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
       <Whiteboard _document={_document} repository={repository} />
     </>

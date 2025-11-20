@@ -56,9 +56,6 @@ function ToolBar({ selectedTool, toggleDebug, debug }: ToolBarProps) {
   return (
     <>
       <div className="card card-row tools">
-        <Button onClick={() => controller.clear()}>
-          <i class="bi bi-file-earmark"></i>
-        </Button>
         <Button onClick={toggleDebug} className={debug ? "active" : undefined}>
           <i class="bi bi-bug"></i>
         </Button>

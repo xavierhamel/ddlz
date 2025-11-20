@@ -22,8 +22,8 @@ export function Files() {
           <i class="bi bi-list"></i>
         </button>
         <button className="active w-auto">
-          Share
-          <i class="bi bi-lock"></i>
+          New Document
+          <i class="bi bi-file-earmark"></i>
         </button>
       </div>
       {showDropdown && (

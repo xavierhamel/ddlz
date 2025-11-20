@@ -158,7 +158,6 @@ button.w-auto {
 }
 
 .dropdown {
-  padding: 0;
   overflow: hidden;
   gap: 4px;
   margin: 8px 0 0 0;
@@ -168,7 +167,6 @@ button.w-auto {
 .dropdown-button {
   width: 100%;
   margin: 0;
-  border-radius: 0;
   padding: 2px 8px;
   justify-content: flex-start;
 }
