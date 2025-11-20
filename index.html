@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doodle</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="app"></div>
+      <div id="doodle-overlay-wrapper">
+        <div id="doodle-overlay">
+          <div contenteditable="true" id="doodle-overlay-input"></div>
+        </div>
+      </div>
+      <canvas id="doodle-canvas" />
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
