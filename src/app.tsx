@@ -24,10 +24,7 @@ export function App() {
   const [showDropdown, setShowDropdown] = useState(false)
 
   useEffect(() => {
-    const element: HTMLElement | null = document.querySelector('#core-text-wrapper')
-    if (!element) {
-      return
-    }
+    const element: HTMLElement = document.querySelector('#core')!
     function clickHandler() {
       setShowDropdown(false)
     }
