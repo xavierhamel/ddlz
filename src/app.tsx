@@ -2,7 +2,7 @@ import './core/app'
 import '../style.css'
 import { Whiteboard } from './ui/whiteboard'
 import { useRef, useState } from 'preact/hooks'
-import { Repository } from './core/repository'
+import { type Document, Repository } from './core/repository'
 
 // 1. Check pour id dans l'url
 //  1.1. Si id, on load le document local. Sinon on load le document distant
@@ -19,12 +19,18 @@ import { Repository } from './core/repository'
 
 export function App() {
   const repository = useRef(new Repository())
+  const [documents] = useState(repository.current.listDocuments())
   const [_document, setDocument] = useState(repository.current.lastDocumentUsed())
-  console.log(_document)
   return (
-    <Whiteboard
-      _document={_document}
-      repository={repository}
-    />
+    <>
+      <div id="overlay">
+        {documents.map(({ name, id }) => (
+          <div onClick={() => setDocument(repository.current.loadDocumentById(id))}>
+            {name ?? id}
+          </div>
+        ))}
+      </div>
+      <Whiteboard _document={_document} repository={repository} />
+    </>
   )
 }

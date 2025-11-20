@@ -51,7 +51,7 @@ export class Repository {
 
   public loadDocumentById(id: string): Document {
     const documentMetadata = this.metadata.documents
-      .filter(({ id }) => id === this.metadata.lastEditedDocumentId)
+      .filter(({ id: other }) => id === other)
     if (documentMetadata.length === 0) {
       throw new Error('Could not find document metadata.')
     }

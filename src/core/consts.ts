@@ -1,9 +1,9 @@
 export const DOCUMENT_ID_PREFIX = 'doc'
 
-export const CANVAS_ID = 'doodle-canvas'
-export const OVERLAY_CONTAINER_ID = 'doodle-overlay'
-export const OVERLAY_WRAPPER_ID = 'doodle-overlay-wrapper'
-export const OVERLAY_INPUT_ID = 'doodle-overlay-input'
+export const CANVAS_ID = 'core-canvas'
+export const OVERLAY_CONTAINER_ID = 'core-text'
+export const OVERLAY_WRAPPER_ID = 'core-text-wrapper'
+export const OVERLAY_INPUT_ID = 'core-text-input'
 export const SCALE = 2
 
 export const FILL_COLORS = [
